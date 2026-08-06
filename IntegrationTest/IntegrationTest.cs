@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using LibraryService.WebAPI;
-using LibraryService.WebAPI.Domain.Entities;
-using LibraryService.WebAPI.Infrastructure.Data;
-using LibraryService.WebAPI.Application.DTO;
+using LibraryService.WebAPI.Business.DTO;
+using LibraryService.WebAPI.Data.DbContext;
+using LibraryService.WebAPI.Data.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -37,6 +37,7 @@ namespace LibraryService.Tests
                         .Options);
             Client = _factory.WithWebHostBuilder(builder =>
                 builder.UseStartup<Startup>()
+                .UseEnvironment("Testing")
                 .ConfigureServices(services =>
                 {
                     services.RemoveAll(typeof(LibraryContext));

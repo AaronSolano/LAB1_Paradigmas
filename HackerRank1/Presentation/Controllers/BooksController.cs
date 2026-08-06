@@ -2,21 +2,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-<<<<<<< HEAD
 using LibraryService.WebAPI.Business.DTO;
 using LibraryService.WebAPI.Business.Services;
 using LibraryService.WebAPI.Data.Entities;
-=======
-<<<<<<< HEAD:HackerRank1/Controllers/BooksController.cs
-using LibraryService.WebAPI.Application.DTO;
-using LibraryService.WebAPI.Application.Services;
-using LibraryService.WebAPI.Domain.Entities;
-=======
-using LibraryService.WebAPI.Domain.Entities;
-using LibraryService.WebAPI.Application.Services;
-using LibraryService.WebAPI.Application.DTO;
->>>>>>> origin/main:HackerRank1/Presentation/Controllers/BooksController.cs
->>>>>>> origin/main
 
 namespace LibraryService.WebAPI.Presentation.Controllers
 {
