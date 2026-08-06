@@ -1,5 +1,5 @@
-﻿using LibraryService.WebAPI.Data;
-using LibraryService.WebAPI.Services;
+using LibraryService.WebAPI.Application.Services;
+using LibraryService.WebAPI.Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +27,9 @@ namespace LibraryService.WebAPI
             services.AddTransient<ILibrariesService,  LibrariesService>();
             services.AddTransient<IBooksService,  BooksService>();
 
-            services.AddDbContext<LibraryContext>(options => options.UseInMemoryDatabase("librarydb"));
+            //services.AddDbContext<LibraryContext>(options => options.UseInMemoryDatabase("librarydb"));
+            services.AddDbContext<LibraryContext>(options =>
+    options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
 
             // Add Swagger generation
