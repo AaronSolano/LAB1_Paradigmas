@@ -8,9 +8,9 @@ namespace LibraryService.WebAPI.Application.DTO
         public int Id { get; set; }
 
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [JsonProperty("location")]
-        public string Location { get; set; }
+        public string? Location { get; set; }
     }
 }
