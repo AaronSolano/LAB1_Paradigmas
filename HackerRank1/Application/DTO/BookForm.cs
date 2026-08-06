@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
-namespace LibraryService.WebAPI.DTO
+namespace LibraryService.WebAPI.Application.DTO
 {
     public class BookForm
     {
@@ -8,10 +8,10 @@ namespace LibraryService.WebAPI.DTO
         public int Id { get; set; }
 
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [JsonProperty("category")]
-        public string Category { get; set; }
+        public string? Category { get; set; }
 
         [JsonProperty("libraryId")]
         public int LibraryId { get; set; }
