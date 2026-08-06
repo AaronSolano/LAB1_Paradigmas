@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using LibraryService.WebAPI.Business.Services;
+using LibraryService.WebAPI.Data.Entities;
+=======
 <<<<<<< HEAD:HackerRank1/Controllers/LibrariesController.cs
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +20,7 @@ using LibraryService.WebAPI.Domain.Entities;
 using LibraryService.WebAPI.Application.Services;
 using LibraryService.WebAPI.Application.DTO;
 >>>>>>> origin/main:HackerRank1/Presentation/Controllers/LibrariesController.cs
+>>>>>>> origin/main
 
 namespace LibraryService.WebAPI.Presentation.Controllers
 {

@@ -1,4 +1,10 @@
 <<<<<<< HEAD
+using LibraryService.WebAPI.Business.Interfaces;
+using LibraryService.WebAPI.Business.Services;
+using LibraryService.WebAPI.Data.DbContext;
+using LibraryService.WebAPI.Data.Repositories;
+=======
+<<<<<<< HEAD
 using LibraryService.WebAPI.Application.Interfaces.Repositories;
 using LibraryService.WebAPI.Application.Services;
 using LibraryService.WebAPI.Infrastructure.Data;
@@ -6,6 +12,7 @@ using LibraryService.WebAPI.Infrastructure.Repositories;
 =======
 using LibraryService.WebAPI.Application.Services;
 using LibraryService.WebAPI.Infrastructure.Data;
+>>>>>>> origin/main
 >>>>>>> origin/main
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +43,9 @@ namespace LibraryService.WebAPI
             services.AddTransient<IBooksService, BooksService>();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/main
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             if (!string.IsNullOrEmpty(connectionString))
             {
@@ -50,11 +60,14 @@ namespace LibraryService.WebAPI
             {
                 options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
             });
+<<<<<<< HEAD
+=======
 =======
             //services.AddDbContext<LibraryContext>(options => options.UseInMemoryDatabase("librarydb"));
             services.AddDbContext<LibraryContext>(options =>
     options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+>>>>>>> origin/main
 >>>>>>> origin/main
 
             // Add Swagger generation
