@@ -1,8 +1,9 @@
-using LibraryService.WebAPI.Application.Services;
-using LibraryService.WebAPI.Infrastructure.Data;
+using LibraryService.WebAPI.Business.Interfaces;
+using LibraryService.WebAPI.Business.Services;
+using LibraryService.WebAPI.Data.DbContext;
+using LibraryService.WebAPI.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,14 +24,26 @@ namespace LibraryService.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add support for Dependency Injection for internal services (BooksService and LibrariesService)
-            services.AddTransient<ILibrariesService,  LibrariesService>();
-            services.AddTransient<IBooksService,  BooksService>();
+            // Add support for Dependency Injection for repositories and internal services
+            services.AddTransient<ILibraryRepository, LibraryRepository>();
+            services.AddTransient<IBookRepository, BookRepository>();
+            services.AddTransient<ILibrariesService, LibrariesService>();
+            services.AddTransient<IBooksService, BooksService>();
 
-            //services.AddDbContext<LibraryContext>(options => options.UseInMemoryDatabase("librarydb"));
-            services.AddDbContext<LibraryContext>(options =>
-    options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllers();
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            if (!string.IsNullOrEmpty(connectionString))
+            {
+                services.AddDbContext<LibraryContext>(options => options.UseNpgsql(connectionString));
+            }
+            else
+            {
+                services.AddDbContext<LibraryContext>(options => options.UseInMemoryDatabase("librarydb"));
+            }
+
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+            });
 
             // Add Swagger generation
             services.AddSwaggerGen(c =>
@@ -47,10 +60,9 @@ namespace LibraryService.WebAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (!env.IsEnvironment("Testing"))
             {
                 app.UseDeveloperExceptionPage();
-
 
                 // Enable middleware to serve generated Swagger as a JSON endpoint.
                 app.UseSwagger();

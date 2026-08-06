@@ -1,15 +1,8 @@
 ## Purpose
 
-Provides a structured RESTful API service to manage libraries and their associated books designed with Clean Architecture principles, strict Dependency Inversion, repository abstractions, and clear layer isolation.
+Provides a structured RESTful API service for library and book management designed with Clean Architecture principles, strict Dependency Inversion, repository abstractions, and clear layer isolation.
 
-## Requirements
-
-### Requirement: Layered Architecture Separation
-The Web API system SHALL organize code into distinct Presentation, Application, Domain, and Infrastructure layers.
-
-#### Scenario: Layered component isolation
-- **WHEN** requests are handled by the system
-- **THEN** Presentation controllers delegate to Application services, which operate on Domain entities and utilize Infrastructure persistence.
+## ADDED Requirements
 
 ### Requirement: Clean Architecture Dependency Inversion
 The Web API solution SHALL enforce Dependency Inversion by isolating pure Domain entities, defining repository interfaces in Application, and encapsulating database concerns within Infrastructure repository implementations.
@@ -39,25 +32,3 @@ The system SHALL maintain complete compatibility for library and book REST endpo
 #### Scenario: Add book to existing library
 - **WHEN** a valid POST request with book details is sent to `/api/libraries/{libraryId}/books` for an existing library
 - **THEN** the system creates the book and returns HTTP 201 Created.
-
-### Requirement: Library Management API
-The system SHALL support retrieving, adding, updating, and deleting libraries via the `/api/libraries` endpoint.
-
-#### Scenario: Retrieve library list
-- **WHEN** a GET request is sent to `/api/libraries`
-- **THEN** the system returns HTTP 200 OK with a list of libraries.
-
-#### Scenario: Retrieve library by ID
-- **WHEN** a GET request is sent to `/api/libraries/{libraryId}` for an existing library
-- **THEN** the system returns HTTP 200 OK with the library details.
-
-### Requirement: Book Management API
-The system SHALL support adding and retrieving books for a specific library via `/api/libraries/{libraryId}/books`.
-
-#### Scenario: Add book to existing library
-- **WHEN** a valid POST request with book details is sent to `/api/libraries/{libraryId}/books` for an existing library
-- **THEN** the system creates the book and returns HTTP 201 Created.
-
-#### Scenario: Retrieve books for existing library
-- **WHEN** a GET request is sent to `/api/libraries/{libraryId}/books` for an existing library
-- **THEN** the system returns HTTP 200 OK with the collection of books associated with that library.
