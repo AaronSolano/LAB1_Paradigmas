@@ -2,11 +2,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+<<<<<<< HEAD:HackerRank1/Controllers/BooksController.cs
 using LibraryService.WebAPI.Application.DTO;
 using LibraryService.WebAPI.Application.Services;
 using LibraryService.WebAPI.Domain.Entities;
+=======
+using LibraryService.WebAPI.Domain.Entities;
+using LibraryService.WebAPI.Application.Services;
+using LibraryService.WebAPI.Application.DTO;
+>>>>>>> origin/main:HackerRank1/Presentation/Controllers/BooksController.cs
 
-namespace LibraryService.WebAPI.Controllers
+namespace LibraryService.WebAPI.Presentation.Controllers
 {
     [ApiController]
     [Route("api/libraries/{libraryId}/[controller]")]
