@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LibraryService.WebAPI.Application.Interfaces.Repositories;
 using LibraryService.WebAPI.Domain.Entities;
+using LibraryService.WebAPI.Domain.Interfaces;
 using LibraryService.WebAPI.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 

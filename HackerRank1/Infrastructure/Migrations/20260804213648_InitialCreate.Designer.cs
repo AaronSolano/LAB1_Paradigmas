@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace HackerRank1.Migrations
+namespace LibraryService.WebAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(LibraryContext))]
     [Migration("20260804213648_InitialCreate")]

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -9,15 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using LibraryService.WebAPI;
-<<<<<<< HEAD
 using LibraryService.WebAPI.Application.DTO;
 using LibraryService.WebAPI.Domain.Entities;
 using LibraryService.WebAPI.Infrastructure.Data;
-=======
-using LibraryService.WebAPI.Domain.Entities;
-using LibraryService.WebAPI.Infrastructure.Data;
-using LibraryService.WebAPI.Application.DTO;
->>>>>>> origin/main
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;

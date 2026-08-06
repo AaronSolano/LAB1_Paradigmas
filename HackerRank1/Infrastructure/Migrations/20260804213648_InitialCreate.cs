@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace HackerRank1.Migrations
+namespace LibraryService.WebAPI.Infrastructure.Migrations
 {
     public partial class InitialCreate : Migration
     {
