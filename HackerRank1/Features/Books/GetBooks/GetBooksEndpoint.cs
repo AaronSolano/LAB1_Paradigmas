@@ -8,7 +8,6 @@ namespace LibraryService.WebAPI.Features.Books.GetBooks
 {
     [ApiController]
     [Route("api/libraries/{libraryId}/books")]
-    [Tags("Books")]
     public class GetBooksEndpoint : ControllerBase
     {
         private readonly LibraryContext _context;
