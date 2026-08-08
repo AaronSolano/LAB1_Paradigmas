@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using LibraryService.WebAPI;
-using LibraryService.WebAPI.Domain.Entities;
-using LibraryService.WebAPI.Infrastructure.Data;
-using LibraryService.WebAPI.Application.DTO;
+using LibraryService.WebAPI.Data;
+using LibraryService.WebAPI.Features.Books.CreateBook;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -36,8 +35,7 @@ namespace LibraryService.Tests
                         .EnableSensitiveDataLogging()
                         .Options);
             Client = _factory.WithWebHostBuilder(builder =>
-                builder.UseStartup<Startup>()
-                .ConfigureServices(services =>
+                builder.ConfigureServices(services =>
                 {
                     services.RemoveAll(typeof(LibraryContext));
                     services.AddSingleton(context);
@@ -72,7 +70,7 @@ namespace LibraryService.Tests
 
         private async Task SeedBook(string bookName, int libraryId)
         {
-            var bookForm = new BookForm
+            var bookForm = new CreateBookRequest
             {
                 Name = bookName
             };
@@ -87,7 +85,7 @@ namespace LibraryService.Tests
         {
             await SeedLibrary();
 
-            var bookForm = new BookForm
+            var bookForm = new CreateBookRequest
             {
                 Name = "Test book 1",
             };
@@ -97,7 +95,7 @@ namespace LibraryService.Tests
 
             response1.StatusCode.Should().BeEquivalentTo(StatusCodes.Status201Created);
 
-            bookForm = new BookForm
+            bookForm = new CreateBookRequest
             {
                 Name = "Test book 2",
             };
@@ -139,7 +137,7 @@ namespace LibraryService.Tests
         {
             await SeedLibrary();
 
-            var bookForm = new BookForm
+            var bookForm = new CreateBookRequest
             {
                 Name = "test book 1",
             };

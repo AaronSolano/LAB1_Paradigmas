@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
->>>>>>> origin/main
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -12,21 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using LibraryService.WebAPI;
-<<<<<<< HEAD
-using LibraryService.WebAPI.Business.DTO;
-using LibraryService.WebAPI.Data.DbContext;
-using LibraryService.WebAPI.Data.Entities;
-=======
-<<<<<<< HEAD
-using LibraryService.WebAPI.Application.DTO;
-using LibraryService.WebAPI.Domain.Entities;
-using LibraryService.WebAPI.Infrastructure.Data;
-=======
-using LibraryService.WebAPI.Domain.Entities;
-using LibraryService.WebAPI.Infrastructure.Data;
-using LibraryService.WebAPI.Application.DTO;
->>>>>>> origin/main
->>>>>>> origin/main
+using LibraryService.WebAPI.Data;
+using LibraryService.WebAPI.Features.Books.CreateBook;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -91,7 +71,7 @@ namespace LibraryService.Tests
 
         private async Task SeedBook(string bookName, int libraryId)
         {
-            var bookForm = new BookForm
+            var bookForm = new CreateBookRequest
             {
                 Name = bookName
             };
@@ -106,7 +86,7 @@ namespace LibraryService.Tests
         {
             await SeedLibrary();
 
-            var bookForm = new BookForm
+            var bookForm = new CreateBookRequest
             {
                 Name = "Test book 1",
             };
@@ -116,7 +96,7 @@ namespace LibraryService.Tests
 
             response1.StatusCode.Should().BeEquivalentTo(StatusCodes.Status201Created);
 
-            bookForm = new BookForm
+            bookForm = new CreateBookRequest
             {
                 Name = "Test book 2",
             };
@@ -158,7 +138,7 @@ namespace LibraryService.Tests
         {
             await SeedLibrary();
 
-            var bookForm = new BookForm
+            var bookForm = new CreateBookRequest
             {
                 Name = "test book 1",
             };
