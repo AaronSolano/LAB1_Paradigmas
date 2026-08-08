@@ -1,5 +1,4 @@
-﻿using LibraryService.WebAPI.Data;
-using LibraryService.WebAPI.Services;
+using LibraryService.WebAPI.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -23,10 +22,6 @@ namespace LibraryService.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add support for Dependency Injection for internal services (BooksService and LibrariesService)
-            services.AddTransient<ILibrariesService,  LibrariesService>();
-            services.AddTransient<IBooksService,  BooksService>();
-
             services.AddDbContext<LibraryContext>(options => options.UseInMemoryDatabase("librarydb"));
             services.AddControllers();
 
