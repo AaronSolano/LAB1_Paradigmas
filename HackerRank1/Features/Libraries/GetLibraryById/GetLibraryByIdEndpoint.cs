@@ -7,6 +7,7 @@ namespace LibraryService.WebAPI.Features.Libraries.GetLibraryById
 {
     [ApiController]
     [Route("api/libraries")]
+    [Tags("Libraries")]
     public class GetLibraryByIdEndpoint : ControllerBase
     {
         private readonly LibraryContext _context;

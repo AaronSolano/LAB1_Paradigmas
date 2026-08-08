@@ -22,8 +22,20 @@ namespace LibraryService.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<LibraryContext>(options => options.UseInMemoryDatabase("librarydb"));
-            services.AddControllers();
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            if (!string.IsNullOrEmpty(connectionString))
+            {
+                services.AddDbContext<LibraryContext>(options => options.UseNpgsql(connectionString));
+            }
+            else
+            {
+                services.AddDbContext<LibraryContext>(options => options.UseInMemoryDatabase("librarydb"));
+            }
+
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+            });
 
             // Add Swagger generation
             services.AddSwaggerGen(c =>

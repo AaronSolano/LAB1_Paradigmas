@@ -8,6 +8,7 @@ namespace LibraryService.WebAPI.Features.Libraries.DeleteLibrary
 {
     [ApiController]
     [Route("api/libraries")]
+    [Tags("Libraries")]
     public class DeleteLibraryEndpoint : ControllerBase
     {
         private readonly LibraryContext _context;

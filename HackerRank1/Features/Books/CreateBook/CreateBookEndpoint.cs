@@ -7,6 +7,7 @@ namespace LibraryService.WebAPI.Features.Books.CreateBook
 {
     [ApiController]
     [Route("api/libraries/{libraryId}/books")]
+    [Tags("Books")]
     public class CreateBookEndpoint : ControllerBase
     {
         private readonly LibraryContext _context;

@@ -7,6 +7,7 @@ namespace LibraryService.WebAPI.Features.Libraries.UpdateLibrary
 {
     [ApiController]
     [Route("api/libraries")]
+    [Tags("Libraries")]
     public class UpdateLibraryEndpoint : ControllerBase
     {
         private readonly LibraryContext _context;

@@ -6,6 +6,7 @@ namespace LibraryService.WebAPI.Features.Libraries.CreateLibrary
 {
     [ApiController]
     [Route("api/libraries")]
+    [Tags("Libraries")]
     public class CreateLibraryEndpoint : ControllerBase
     {
         private readonly LibraryContext _context;
